@@ -15,11 +15,11 @@ The Atlanta WordPress Coder's Guild
 	- Activation
 2. Simple Plugin 
 	- Using `'the_content'` hook
-	- Print Copyright on every post
+	- Print Copyright Notice on every post
 3. The Must-Use Plugin Directory
 	- The `plugin-loader.php`
 4. Using Classes for Plugins
-	- EventPressRedux
+	- The `EventPress_Redux` class
 5. Add Post Types
 	- Event
 	- Venue
@@ -27,11 +27,11 @@ The Atlanta WordPress Coder's Guild
 6. Data Entry Fields
 	- Start, End, Venue
 	- Use `edit_form_after_title` hook
-		- Instead of a Metabox - we'll show that too
+		- Instead of a Metabox - we'll show the hooks for that too
 7. Enqueue Scripts and CSS
-	- Enqueue Select2.js for Venue
+	- Enqueue `select2.js`, `select2.css`  for Venue
 	- Add in Footer
-9. Register an Email Address for an Event
+9. Register for an Event
 	- Using WP-AJAX and 
 	- Registration post type.
 
