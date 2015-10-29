@@ -31,23 +31,15 @@ The Atlanta WordPress Coder's Guild
 7. Enqueue Scripts and CSS
 	- Enqueue Select2.js for Venue
 	- Add in Footer
-9. Register an Email for an Event
+9. Register an Email Address for an Event
 	- Using WP-AJAX and 
 	- Registration post type.
 
 
-
-
-
-
-
-
-
-
-
-
-
+##Repository
+- [The Plugin Repository](https://github.com/thecodersguild/wordpress-plugins-and-hooks) on GitHub
 
 ##References
-- https://codex.wordpress.org/Plugin_API/Action_Reference
-- https://developer.wordpress.org/reference/
+- [Codex Plugins API/Actions Reference](https://codex.wordpress.org/Plugin_API/Action_Reference)
+- [Hooks Reference](https://developer.wordpress.org/reference/hooks/)
+- [Plugin File Header Fields](https://codex.wordpress.org/File_Header)
