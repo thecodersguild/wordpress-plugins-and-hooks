@@ -1,4 +1,4 @@
-#WordPress Plugins and Hooks
+# Understanding Hooks and Developing Plugins for WordPress
 The Atlanta WordPress Coder's Guild
 - Presenters: @mikeschinkel / @wpscholar
 - Twitter: @thecodersguild
