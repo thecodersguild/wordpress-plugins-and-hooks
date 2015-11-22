@@ -2,15 +2,32 @@
 
 /*
  * Plugin Name: EventPress Redux
- * Description: Like EventPress, Only Better! :-)
+ * Description: Like EventPress, Only Better! ;-)
  * Author: The Atlanta WordPress Coder's Guild™
  * Author URI: http://thecodersguild.com
  */
 class EventPress_Redux {
 
+	/**
+	 *
+	 */
 	const EVENT_POST_TYPE = 'epr_event';
+
+	/**
+	 *
+	 */
 	const VENUE_POST_TYPE = 'epr_venue';
+
+	/**
+	 *
+	 */
 	const REGISTRATION_POST_TYPE = 'epr_register';
+
+	/**
+	 *
+	 */
+	const EVENT_TYPE_TAXONOMY = 'epr_event_type';
+
 
 	/**
 	 * Hook all actions and filters required for the plugin
@@ -85,6 +102,7 @@ class EventPress_Redux {
 	static function _init() {
 
 		self::_register_post_types();
+		self::_register_taxonomies();
 		self::_flush_urls();
 
 	}
@@ -96,10 +114,10 @@ class EventPress_Redux {
 
 		register_post_type( self::EVENT_POST_TYPE, array(
 
-			'public'  => true,
-			'label'   => __( 'Events', 'eventpress-redux' ),
-			'rewrite' => array(
-					'slug' => 'events'
+			'public'    => true,
+			'label'     => __( 'Events', 'eventpress-redux' ),
+			'rewrite'   => array(
+				'slug' => 'events'
 			),
 
 		) );
@@ -109,10 +127,10 @@ class EventPress_Redux {
 			'public'   => true,
 			'label'    => __( 'Venues', 'eventpress-redux' ),
 			'rewrite'  => array(
-					'slug' => 'venues'
+				'slug' => 'venues'
 			),
 			'supports' => array(
-					'title',
+				'title',
 			),
 
 		) );
@@ -123,8 +141,26 @@ class EventPress_Redux {
 			'show_ui'      => true,
 			'label'        => __( 'Registrations', 'eventpress-redux' ),
 			'supports'     => array(
-					'title',
+				'title',
 			),
+
+		) );
+
+
+	}
+
+	/**
+	 * Add Taxonomy registrations
+	 */
+	private static function _register_taxonomies() {
+
+		register_taxonomy( self::EVENT_TYPE_TAXONOMY, self::EVENT_POST_TYPE, array(
+
+			'label'             => __( 'Event Type', 'eventpress-redux' ),
+			'public'            => true,
+			'show_ui'           => true,
+			'show_admin_column' => true,
+			'hierarchical'      => true,
 
 		) );
 
@@ -340,6 +376,37 @@ class EventPress_Redux {
 		}
 
 		return;
+	}
+
+	/**
+	 * Ensure only value HTML for the HTML5 <select> element is used.
+	 *
+	 * @param string $html
+	 *
+	 * @return string
+	 */
+	static function sanitize_html_select( $html ) {
+
+		return wp_kses( $html, array(
+
+			'select' => array(
+				'autofocus' => true,
+				'disabled'  => true,
+				'form'      => true,
+				'multiple'  => true,
+				'name'      => true,
+				'required'  => true,
+				'size'      => true,
+			),
+			'option' => array(
+				'value'    => true,
+				'label'    => true,
+				'disabled' => true,
+				'selected' => true,
+			),
+
+		));
+
 	}
 
 }

@@ -19,7 +19,9 @@
 			<label for="epr-event-venue"><?php _e( 'Venue:', 'eventpress-redux' ); ?></label>
 			<br/>
 			<select type="text" name="epr_event[venue_id]" id="epr-event-venue">
-				<?php wp_kses_post( $options ); ?>
+				<?php
+					echo EventPress_Redux::sanitize_html_select( $options );
+				?>
 			</select>
 		</div>
 		<br/>
